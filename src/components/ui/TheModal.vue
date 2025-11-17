@@ -1,21 +1,23 @@
 <template>
-  <div v-if="showModal" class="modal-overlay" @click.self="closeModal">
-    <div class="modal modal-large">
-      <div class="modal-header">
-        <h3>{{ title }}</h3>
-        <button @click="closeModal" class="btn-close">✕</button>
-      </div>
+  <Teleport to="body">
+    <div v-if="showModal" class="modal-overlay" @click.self="closeModal">
+      <div class="modal modal-large">
+        <div class="modal-header">
+          <h3>{{ title }}</h3>
+          <button @click="closeModal" class="btn-close">✕</button>
+        </div>
 
-      <div class="modal-body">
-        <slot></slot>
-      </div>
+        <div class="modal-body">
+          <slot></slot>
+        </div>
 
-      <div class="modal-footer">
-        <slot v-if="$slots.footer" name="footer"></slot>
-        <button v-else @click="closeModal" class="btn btn-secondary">Закрыть</button>
+        <div class="modal-footer">
+          <slot v-if="$slots.footer" name="footer"></slot>
+          <button v-else @click="closeModal" class="btn btn-secondary">Закрыть</button>
+        </div>
       </div>
     </div>
-  </div>
+  </Teleport>
 </template>
 
 <script setup lang="ts">
